@@ -46,8 +46,9 @@
 
        <% comments.forEach(comment => { %>
            <div class="container mt-2">
-                <img src="<%= comment.createdBy.profileImageURL %>" alt="">
-                <div class="mx-1"><%= comment.content %></div>
+                <img class="rounded-4" height="30px" width="30px" src="<%= comment.createdBy.profileImageURL %>" alt="">
+                <span class="mx-2 text-dark fw-semibold"><%= comment.createdBy.fullname %></span>
+                <div class="mx-5 small"><%= comment.content %></div>
 
                </div>
 
