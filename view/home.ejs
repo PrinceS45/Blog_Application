@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <%- include('./partials/head')  %>
+    <title>homePage</title>
+    <style>
+      .card-title,
+      .card-text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <%- include('./partials/nav')  %>
+
+    <div class="container mt-4 flex-grow-1">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+        <% blogs.forEach(blog => { %>
+          <div class="col">
+            <div class="card h-100 shadow-sm" style="width: 100%; border-radius: 10px;">
+              <img src="<%= blog.coverImageUrl %>" class="card-img-top" alt="Cover" style="height: 160px; object-fit: cover; border-radius: 10px 10px 0 0;">
+              <div class="card-body p-2 d-flex flex-column">
+                <h6 class="card-title text-truncate mb-1" title="<%= blog.title %>"><%= blog.title %></h6>
+                <p class="card-text small text-muted mb-2 text-truncate"><%= blog.body.substring(0, 60) %>...</p>
+                <a href="/blog/<%= blog._id %>" class="btn btn-sm btn-outline-primary mt-auto">View</a>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+
+    <%- include('./partials/script') %>
+    <footer class="text-center py-3 text-muted bg-light border-top w-100 mt-auto">
+      <p class="mb-0">Created with ❤️ by Prince Singh</p>
+    </footer>
+</body>
+</html>
